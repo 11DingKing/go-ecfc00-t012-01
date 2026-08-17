@@ -126,7 +126,7 @@ func (svc *PatrolService) CheckInBatch(reqs []CheckInRequest) ([]domain.CheckIn,
 		return ti.Before(tj)
 	})
 
-	results := make([]domain.CheckIn, len(sorted))
+	results := make([]domain.CheckIn, 0, len(sorted))
 	for _, r := range sorted {
 		ci, _, err := svc.CheckIn(r)
 		if err != nil {
